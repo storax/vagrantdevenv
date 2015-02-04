@@ -11,6 +11,6 @@ sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
 sudo apt-get python-pip -y
-sudo pip install virtualenvwxrapper
+sudo pip install virtualenvwrapper
 sudo chsh -s $(which zsh)
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/antigen.zsh
