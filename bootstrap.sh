@@ -12,5 +12,8 @@ sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
 sudo pip install virtualenvwrapper
-sudo chsh -s $(which zsh)
+echo Changing homeshell to zsh
+sudo chsh -s $(which zsh) vagrant
+echo Downloading antigen
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/antigen.zsh
+echo Downloading antigen done!
