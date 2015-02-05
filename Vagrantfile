@@ -26,6 +26,7 @@ Vagrant.configure(2) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.provider "virtualbox" do |vb|
+    vb.name = "developmentenv"
     vb.gui = true
     vb.cpus = 4
     vb.memory = "2048"
@@ -41,5 +42,5 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision :shell, :path => "bootstrap.sh"
+  config.vm.provision "shell", path: "bootstrap.sh", privileged: false
 end
