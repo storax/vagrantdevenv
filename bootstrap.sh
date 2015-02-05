@@ -7,7 +7,7 @@ sudo apt-get install gitk -y
 sudo apt-get install emacs -y
 sudo apt-get install zsh -y
 sudo apt-get install guake -y
-sudo apt-get python-pip -y
+sudo apt-get install python-pip -y
 sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
