@@ -17,7 +17,6 @@ declare -a pkgs=(
     make
     network-manager-gnome
     overlay-scrollbar
-    policykit-1
     policykit-desktop-privileges
     python-pip
     zsh
