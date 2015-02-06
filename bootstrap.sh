@@ -1,23 +1,35 @@
 sudo apt-get update
 sudo apt-get upgrade -y
-
 sudo apt-get install ubuntu-desktop -y --no-install-recommends
-
-sudo apt-get install app-install-data-partner -y
-sudo apt-get install firefox -y
-sudo apt-get install gcc -y
-sudo apt-get install gnome-disk-utility -y
-sudo apt-get install gnome-screensaver -y
-sudo apt-get install gnome-terminal -y
-sudo apt-get install make -y
-
 sudo apt-get upgrade -y
-sudo apt-get install git -y
-sudo apt-get install gitk -y
-sudo apt-get install emacs -y
-sudo apt-get install zsh -y
-sudo apt-get install guake -y
-sudo apt-get install python-pip -y
+
+
+declare -a pkgs=(
+    app-install-data-partner
+    emacs
+    firefox
+    gcc
+    git
+    gitk
+    gnome-disk-utility
+    gnome-terminal
+    guake
+    make
+    network-manager-gnome
+    overlay-scrollbar
+    policykit-1
+    policykit-desktop-privileges
+    python-pip
+    zsh
+)
+
+for i in "${pkgs[@]}"
+do
+   echo Installing $i
+   sudo apt-get install -y $i
+   echo Finished installing $i
+done
+
 
 sudo gem install homesick
 homesick clone storax/storaxcastle
