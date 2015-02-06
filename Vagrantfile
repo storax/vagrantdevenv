@@ -26,9 +26,11 @@ Vagrant.configure(2) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.provider "virtualbox" do |vb|
+    vb.name = "developmentenv"
     vb.gui = true
-    vb.cpus = 2
+    vb.cpus = 4
     vb.memory = "2048"
+    vb.customize ["modifyvm", :id, "--vram", "128"]
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
