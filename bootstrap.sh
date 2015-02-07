@@ -14,11 +14,18 @@ declare -a pkgs=(
     gnome-disk-utility
     gnome-terminal
     guake
+    indicator-application
+    indicator-appmenu
+    indicator-messages
+    indicator-renderer
+    indicator-session
     make
     network-manager-gnome
     overlay-scrollbar
-    policykit-desktop-privileges
     python-pip
+    ubuntu-system-settings
+    unity-lens-applications
+    unity-lens-files
     zsh
 )
 
