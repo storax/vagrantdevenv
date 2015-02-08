@@ -1,6 +1,18 @@
 sudo apt-get update
 sudo apt-get upgrade -y
 
+declare -a pkgs=(
+   fonts-inconsolata
+   fonts-dejavu
+)
+
+for i in "${pkgs[@]}"
+do
+   echo Installing $i
+   sudo apt-get install -y $i
+   echo Finished installing $i
+done
+
 sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
