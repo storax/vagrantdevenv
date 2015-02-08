@@ -1,38 +1,9 @@
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install ubuntu-desktop -y --no-install-recommends
-sudo apt-get upgrade -y
-
 
 declare -a pkgs=(
-    app-install-data-partner
-    emacs
-    firefox
-    gcc
-    git
-    gitk
-    gnome-disk-utility
-    gnome-terminal
-    guake
-    hud
-    indicator-application
-    indicator-appmenu
-    indicator-datetime
-    indicator-keyboard
-    indicator-session
-    indicator-sound
-    lightdm
-    make
-    network-manager-gnome
-    overlay-scrollbar
-    policykit-desktop-privileges
-    python-pip
-    ubuntu-session
-    ubuntu-settings
-    unity-lens-applications
-    unity-lens-files
-    unity-settings-daemon
-    zsh
+   fonts-inconsolata
+   fonts-dejavu
 )
 
 for i in "${pkgs[@]}"
@@ -41,7 +12,6 @@ do
    sudo apt-get install -y $i
    echo Finished installing $i
 done
-
 
 sudo gem install homesick
 homesick clone storax/storaxcastle
