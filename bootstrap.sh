@@ -31,3 +31,8 @@ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-
 echo Installation of pyenv finished!
 
 git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
+
+echo Installing Pyenv dependencies
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm
+echo Installing Pyenv dependencies finished!
