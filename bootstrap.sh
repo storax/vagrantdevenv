@@ -2,6 +2,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 declare -a pkgs=(
+   git-flow
    fonts-inconsolata
    fonts-dejavu
 )
