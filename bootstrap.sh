@@ -25,3 +25,9 @@ sudo chsh -s $(which zsh) vagrant
 echo Start downloading antigen
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > ~/antigen.zsh
 echo Downloading antigen finished!
+
+echo Start installing pyenv
+curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+echo Installation of pyenv finished!
+
+git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
