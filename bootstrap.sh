@@ -44,3 +44,10 @@ echo Installing Pyside dependencies finished!
 echo Installing Pyside Phonon VLC Backend
 sudo apt-get install -y phonon-backend-vlc
 echo Installing Pyside Phonon VLC Backend finished!
+
+
+mkdir ~/projects
+git clone https://gist.github.com/6402dc6c4759ebd8123e.git ~/projects/clonegithubrepos
+cd ~/projects
+source ~/projects/clonegithubrepos/clonegithubrepos.sh storax
+cd ~
