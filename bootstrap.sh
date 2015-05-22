@@ -2,9 +2,10 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 declare -a pkgs=(
-   git-flow
-   fonts-inconsolata
    fonts-dejavu
+   fonts-inconsolata
+   git-flow
+   jq
 )
 
 for i in "${pkgs[@]}"
@@ -51,3 +52,11 @@ git clone https://gist.github.com/6402dc6c4759ebd8123e.git ~/projects/clonegithu
 cd ~/projects
 source ~/projects/clonegithubrepos/clonegithubrepos.sh storax
 cd ~
+
+pyenv install 2.7.9
+pyenv install 3.4.3
+pyenv rehash
+pyenv global 3.4.3
+pyenv shell 3.4.3
+
+pip install elpy virtualenvwrapper pyflakes
