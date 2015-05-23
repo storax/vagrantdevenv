@@ -51,6 +51,7 @@ mkdir ~/projects
 git clone https://gist.github.com/6402dc6c4759ebd8123e.git ~/projects/clonegithubrepos
 cd ~/projects
 source ~/projects/clonegithubrepos/clonegithubrepos.sh storax
+find . -wholename '*/.git/config' -exec sed -i 's#https://github.com/#git@github.com:#g' {} +
 cd ~
 
 pyenv install 2.7.9
