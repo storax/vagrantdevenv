@@ -39,7 +39,7 @@ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev li
 echo Installing Pyenv dependencies finished!
 
 echo Installing Pyside dependencies
-sudo apt-get install -y build-essential git cmake libqt4-dev libphonon-dev python2.7-dev libxml2-dev libxslt1-dev qtmobility-dev
+sudo apt-get install -y build-essential git cmake libqt4-dev libphonon-dev python2.7-dev python3.4-dev libxml2-dev libxslt1-dev qtmobility-dev
 echo Installing Pyside dependencies finished!
 
 echo Installing Pyside Phonon VLC Backend
@@ -54,10 +54,47 @@ source ~/projects/clonegithubrepos/clonegithubrepos.sh storax
 find . -wholename '*/.git/config' -exec sed -i 's#https://github.com/#git@github.com:#g' {} +
 cd ~
 
+echo Creating python envs
 pyenv install 2.7.9
 pyenv install 3.4.3
 pyenv rehash
 pyenv global 3.4.3
 pyenv shell 3.4.3
 
-pip install elpy virtualenvwrapper pyflakes
+pip install elpy virtualenvwrapper pyflakes pip2pi
+
+echo Create pip2pi
+cd ~/projects
+mkdir pip2pi
+cd pip2pi
+pip2pi . pytest tox sphinx mock coverage wheel -n
+cd ~
+mkdir -p ~/.config/pip
+cat > ~/.config/pip/pip.conf <<EOF
+[global]
+index-url = file:///home/vagrant/Projects/pip2pi/simple/
+extra-index-url = https://pypi.python.org/simple
+EOF
+
+echo Building pyside
+pip install wheel
+wget https://pypi.python.org/packages/source/P/PySide/PySide-1.2.2.tar.gz
+tar -xvzf PySide-1.2.2.tar.gz
+cd PySide-1.2.2
+python setup.py bdist_wheel --qmake=/usr/bin/qmake-qt4 --standalone
+cp dist/*.whl ~/projects/pip2pi/
+dir2pi ~/projects/pip2pi -n
+cd ~
+
+echo install latest emacs
+cd ~
+mkdir emacs-src && cd emacs-src
+wget http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
+tar xvf emacs-24.5.tar.gz
+sudo apt-get build-dep emacs24 -y
+cd emacs-24.5
+./configure
+make
+sudo apt-get install checkinstall -y
+sudo checkinstall -y
+cd ../../
