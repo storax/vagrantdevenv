@@ -19,6 +19,8 @@ declare -a pkgs=(
    python2.7-dev
    python3.4-dev
    qtmobility-dev
+   ruby
+   ruby-dev
    zlib1g-dev
    zsh
 )
@@ -109,4 +111,8 @@ cd emacs-24.5
 make
 sudo apt-get install checkinstall -y
 sudo checkinstall -y
-cd ../../
+cd ~
+
+echo install travis
+gem install travis
+echo finish installing travis
