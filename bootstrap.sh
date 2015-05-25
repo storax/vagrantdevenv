@@ -29,6 +29,8 @@ echo Installing ${pkgs[*]}
 sudo apt-get install -y ${pkgs[*]}
 echo Finished installing ${pkgs[*]}
 
+sudo apt-get --purge remove postfix
+
 sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
