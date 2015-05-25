@@ -1,19 +1,31 @@
+#!/bin/bash -eux
+
 sudo apt-get update
 sudo apt-get upgrade -y
 
 declare -a pkgs=(
+   emacs
+   firefox
    fonts-dejavu
    fonts-inconsolata
+   git
    git-flow
+   git-flow
+   gitk
+   guake
    jq
+   phonon-backend-vlc
+   python-pip
+   python2.7-dev
+   python3.4-dev
+   qtmobility-dev
+   zlib1g-dev
+   zsh
 )
 
-for i in "${pkgs[@]}"
-do
-   echo Installing $i
-   sudo apt-get install -y $i
-   echo Finished installing $i
-done
+echo Installing ${pkgs[*]}
+sudo apt-get install -y ${pkgs[*]}
+echo Finished installing ${pkgs[*]}
 
 sudo gem install homesick
 homesick clone storax/storaxcastle
