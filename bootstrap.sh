@@ -70,11 +70,9 @@ zsh ~/projects/clonegithubrepos/clonegithubrepos.sh storax
 find . -wholename '*/.git/config' -exec sed -i 's#https://github.com/#git@github.com:#g' {} +
 cd ~
 
-echo Installing Pyenv
-git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-exec $SHELL
 
 echo Creating python envs
+exec $SHELL
 pyenv install 2.7.9
 pyenv install 3.4.3
 pyenv rehash
