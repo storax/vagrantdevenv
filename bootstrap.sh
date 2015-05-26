@@ -72,7 +72,9 @@ cd ~
 
 
 echo Creating python envs
-exec $SHELL
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 pyenv install 2.7.9
 pyenv install 3.4.3
 pyenv rehash
