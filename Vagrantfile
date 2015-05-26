@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
     vb.gui = true
     vb.cpus = 4
     vb.memory = "2048"
-    vb.customize ["modifyvm", :id, "--vram", "128", "--monitorcount", "2"]
+    vb.customize ["modifyvm", :id, "--vram", "128", "--monitorcount", "1"]
   end
 
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
