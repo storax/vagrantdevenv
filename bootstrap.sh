@@ -29,8 +29,6 @@ echo Installing ${pkgs[*]}
 sudo apt-get install -y ${pkgs[*]}
 echo Finished installing ${pkgs[*]}
 
-sudo apt-get -y --purge remove postfix
-
 sudo gem install homesick
 homesick clone storax/storaxcastle
 homesick symlink storaxcastle
@@ -112,6 +110,7 @@ mkdir emacs-src && cd emacs-src
 wget http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
 tar xvf emacs-24.5.tar.gz
 sudo apt-get build-dep emacs24 -y
+sudo apt-get -y --purge remove postfix
 cd emacs-24.5
 ./configure
 make
