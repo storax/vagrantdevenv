@@ -128,5 +128,5 @@ dir2pi ~/projects/pip2pi -n
 cd ~
 
 echo install travis
-gem install travis
+sudo gem install travis
 echo finish installing travis
