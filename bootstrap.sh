@@ -133,3 +133,5 @@ cd ~
 echo install travis
 sudo gem install travis
 echo finish installing travis
+
+gsettings set com.canonical.Unity.Launcher favorites "['application://org.gnome.Nautius.desktop','application://firefox.desktop','application://unity-control-center.desktop','application://emacs.desktop','appliaction://pidgin.desktop','unity://running-apps','unity://expo-icon','unity://devices']"
