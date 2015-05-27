@@ -3,6 +3,11 @@
 sudo apt-get update
 sudo apt-get upgrade -y
 
+sudo apt-get remove -y --purge xserver-xorg
+sudo apt-get install -y xserver-xorg
+sudo dpkg-reconfigure xserver-xorg
+
+
 declare -a pkgs=(
    emacs
    firefox
@@ -15,12 +20,16 @@ declare -a pkgs=(
    guake
    jq
    phonon-backend-vlc
+   pidgin
+   pidgin-otr
    python-pip
    python2.7-dev
    python3.4-dev
    qtmobility-dev
    ruby
    ruby-dev
+   systemd-sysv
+   ubuntu-standard
    zlib1g-dev
    zsh
 )
@@ -65,8 +74,8 @@ cd ~
 mkdir emacs-src && cd emacs-src
 wget http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
 tar xvf emacs-24.5.tar.gz
-sudo debconf-set-selection <<< "postfix postfix/mailname string vagrantdevenv.vm"
-sudo debconf-set-selection <<< "postfix postfix/main_mailer_type string 'No configuration'"
+sudo debconf-set-selections <<< "postfix postfix/mailname string vagrantdevenv.vm"
+sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string 'No configuration'"
 sudo apt-get build-dep emacs24 -y
 cd emacs-24.5
 ./configure
