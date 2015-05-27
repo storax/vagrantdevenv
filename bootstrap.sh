@@ -114,12 +114,6 @@ mkdir pip2pi
 cd pip2pi
 pip2pi . pytest tox sphinx mock coverage wheel -n
 cd ~
-mkdir -p ~/.config/pip
-cat > ~/.config/pip/pip.conf <<EOF
-[global]
-index-url = file:///home/vagrant/Projects/pip2pi/simple/
-extra-index-url = https://pypi.python.org/simple
-EOF
 
 echo Building pyside
 pip install wheel
