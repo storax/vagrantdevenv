@@ -43,5 +43,14 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", path: "bootstrap.sh", privileged: false
+  config.vm.provision "shell", path: "packages.sh", privileged: false
+  config.vm.provision "shell", path: "dotfiles.sh", privileged: false
+  config.vm.provision "shell", path: "zshell.sh", privileged: false
+  config.vm.provision "shell", path: "emacs.sh", privileged: false
+  config.vm.provision "shell", path: "pyenv.sh", privileged: false
+  config.vm.provision "shell", path: "pip2pi.sh", privileged: false
+  config.vm.provision "shell", path: "pyside.sh", privileged: false
+  config.vm.provision "shell", path: "travis.sh", privileged: false
+  config.vm.provision "shell", path: "gsettings.sh", privileged: false
+  config.vm.provision "shell", path: "cloneprojects.sh", privileged: false
 end
