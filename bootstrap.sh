@@ -60,6 +60,20 @@ echo Installing Pyside Phonon VLC Backend
 sudo apt-get install -y phonon-backend-vlc
 echo Installing Pyside Phonon VLC Backend finished!
 
+echo install latest emacs
+cd ~
+mkdir emacs-src && cd emacs-src
+wget http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
+tar xvf emacs-24.5.tar.gz
+sudo debconf-set-selection <<< "postfix postfix/mailname string vagrantdevenv.vm"
+sudo debconf-set-selection <<< "postfix postfix/main_mailer_type string 'No configuration'"
+sudo apt-get build-dep emacs24 -y
+cd emacs-24.5
+./configure
+make
+sudo apt-get install checkinstall -y
+sudo checkinstall -y
+cd ~
 
 mkdir ~/projects
 git clone https://gist.github.com/6402dc6c4759ebd8123e.git ~/projects/clonegithubrepos
@@ -102,20 +116,6 @@ cd PySide-1.2.2
 python setup.py bdist_wheel --qmake=/usr/bin/qmake-qt4 --standalone
 cp dist/*.whl ~/projects/pip2pi/
 dir2pi ~/projects/pip2pi -n
-cd ~
-
-echo install latest emacs
-cd ~
-mkdir emacs-src && cd emacs-src
-wget http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
-tar xvf emacs-24.5.tar.gz
-sudo apt-get build-dep emacs24 -y
-sudo apt-get -y --purge remove postfix
-cd emacs-24.5
-./configure
-make
-sudo apt-get install checkinstall -y
-sudo checkinstall -y
 cd ~
 
 echo install travis
