@@ -53,4 +53,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "travis.sh", privileged: false
   config.vm.provision "shell", path: "gsettings.sh", privileged: false
   config.vm.provision "shell", path: "cloneprojects.sh", privileged: false
+  config.vm.provision "shell", path: "misc.sh", privileged: false
 end
