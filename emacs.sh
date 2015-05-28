@@ -18,15 +18,3 @@ make
 sudo apt-get install checkinstall -y
 sudo checkinstall -y
 cd ~
-
-sudo apt-get install -y python-pyqt5 python-pyqt5.qtwebkit
-pyenv shell system
-sudo pip install epc
-
-wget http://sourceforge.net/projects/python-xlib/files/python-xlib/0.15rc1/python-xlib-0.15rc1.tar.gz
-tar -xf python-xlib-0.15rc1.tar.gz
-cd python-xlib-0.15rc1
-sudo python setup.py install
-cd ..
-rm -rf python-xlib-0.15rc1.tar.gz
-rm -rf python-xlib-0.15rc1
