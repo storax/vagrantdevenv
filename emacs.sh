@@ -1,5 +1,7 @@
 #!/bin/bash -eux
 
+sudo pip install elpy pyflakes
+
 echo install latest emacs
 cd ~
 mkdir emacs-src && cd emacs-src
