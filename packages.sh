@@ -10,7 +10,7 @@ sudo apt-get install -y xserver-xorg
 sudo dpkg-reconfigure xserver-xorg
 
 declare -a pkgs=(
-   emacs
+   compizconfig-settings-manager
    firefox
    fonts-dejavu
    fonts-inconsolata
