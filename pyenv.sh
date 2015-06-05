@@ -17,6 +17,6 @@ pyenv install 3.4.3
 pyenv rehash
 pyenv global 3.4.3
 pyenv shell 2.7.9
-pip install elpy virtualenvwrapper pyflakes
+pip install elpy virtualenvwrapper pyflakes httpie
 pyenv shell 3.4.3
-pip install elpy virtualenvwrapper pyflakes
+pip install elpy virtualenvwrapper pyflakes httpie
