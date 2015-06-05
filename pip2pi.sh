@@ -3,6 +3,7 @@
 pip install pip2pi
 
 echo Create pip2pi
+mkdir ~/projects
 cd ~/projects
 mkdir pip2pi
 cd pip2pi
