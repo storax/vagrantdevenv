@@ -6,17 +6,30 @@ echo Installation of pyenv finished!
 
 git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
 
-pip install elpy virtualenvwrapper pyflakes
+declare -a versions=(
+    2.7.9
+    3.4.3
+)
+
+declare -a pkgs=(
+    httpie
+    elpy
+    pyflakes
+    virtualenvwrapper
+)
+
+pip install ${pkgs[*]}
 
 echo Creating python envs
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-pyenv install 2.7.9
-pyenv install 3.4.3
-pyenv rehash
+for version in "${versions[@]}"
+do
+    pyenv install $version
+    pyenv rehash
+    pyeng shell $version
+    pip install ${pkgs[*]}
+done
 pyenv global 3.4.3
-pyenv shell 2.7.9
-pip install elpy virtualenvwrapper pyflakes httpie
 pyenv shell 3.4.3
-pip install elpy virtualenvwrapper pyflakes httpie
