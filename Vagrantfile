@@ -26,7 +26,7 @@ Vagrant.configure(2) do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.name = "developmentenv"
+    vb.name = "developmentenv15"
     vb.gui = true
     vb.cpus = 4
     vb.memory = "2048"

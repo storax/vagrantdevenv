@@ -28,7 +28,7 @@ for version in "${versions[@]}"
 do
     pyenv install $version
     pyenv rehash
-    pyeng shell $version
+    pyenv shell $version
     pip install ${pkgs[*]}
 done
 pyenv global 3.4.3
