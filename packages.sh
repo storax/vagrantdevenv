@@ -24,9 +24,6 @@ declare -a pkgs=(
    ruby-dev
    systemd-sysv
    ubuntu-standard
-   virtualbox-guest-dkms
-   virtualbox-guest-utils
-   virtualbox-guest-x11
    zlib1g-dev
    zsh
 )
