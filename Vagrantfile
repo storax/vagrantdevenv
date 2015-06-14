@@ -55,4 +55,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "cloneprojects.sh", privileged: false
   config.vm.provision "shell", path: "misc.sh", privileged: false
   config.vm.provision "shell", path: "spotify.sh", privileged: false
+  config.vm.provision "shell", path: "hub.sh", privileged: false
 end
