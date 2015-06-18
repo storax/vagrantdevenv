@@ -29,6 +29,7 @@ do
     pyenv install $version
     pyenv rehash
     pyenv shell $version
+    pip install -U pip
     pip install ${pkgs[*]}
 done
 pyenv global 3.4.3
