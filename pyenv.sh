@@ -18,6 +18,7 @@ declare -a pkgs=(
     virtualenvwrapper
 )
 
+pip install -U pip
 pip install ${pkgs[*]}
 
 echo Creating python envs
