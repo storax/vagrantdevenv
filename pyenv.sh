@@ -18,8 +18,8 @@ declare -a pkgs=(
     virtualenvwrapper
 )
 
-pip install -U pip
-pip install ${pkgs[*]}
+sudo pip install -U pip
+sudo pip install ${pkgs[*]}
 
 echo Creating python envs
 export PYENV_ROOT="$HOME/.pyenv"
