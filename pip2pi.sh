@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-pip install pip2pi
+sudo pip install pip2pi
 
 echo Create pip2pi
 mkdir ~/projects

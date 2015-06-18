@@ -9,7 +9,7 @@ sudo apt-get install -y phonon-backend-vlc
 echo Installing Pyside Phonon VLC Backend finished!
 
 echo Building pyside
-pip install wheel
+sudo pip install wheel
 wget https://pypi.python.org/packages/source/P/PySide/PySide-1.2.2.tar.gz
 tar -xvzf PySide-1.2.2.tar.gz
 cd PySide-1.2.2
