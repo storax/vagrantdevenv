@@ -39,3 +39,13 @@
         creates: /home/vagrant/.homesick/repos/storaxcastle
     - name: link storaxcastle
       command: homesick symlink stroaxcastle
+- host: all
+  tasks:
+    - name: Set homeshell to zsh
+      become: yes
+      command: chsh -s `which zsh` vagrant
+    - name: Download antigen
+      get-url:
+        args:
+          url: https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh
+          dest: /home/vagrant/antigen.zsh
