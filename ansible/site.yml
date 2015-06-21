@@ -49,3 +49,36 @@
         args:
           url: https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh
           dest: /home/vagrant/antigen.zsh
+- host: all
+  become: yes
+  tasks:
+    - name: install python emacs packages
+      pip: name={{ item }} state=latest
+      with_items:
+        - elpy
+        - pyflakes
+    - name: download emacs source
+      get-url:
+        args:
+          url: http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
+          dest: /home/vagrant/emacs-src/emacs-24.5.tar.gz
+    - name: unzip emacs source
+      unarchive:
+        args:
+          src: /home/vagrant/emacs-src/emacs-24.5.tar.gz
+          dest: /home/vagrant/emacs-src/emacs-24.5 copy=no
+    - name: copy dbconf selections file
+      copy: src=dbconf-selections dest=/tmp/dbconf-selections
+    - name: set dbconf selections
+      command: dbconf-set-selections /tmp/dbconf-selections
+    - name: install emacs build dependencies
+      apt: name=emacs24 state=build-dep
+    - name: configure emacs
+      command: ./configure chdir=/home/vagrant/emacs-src/emacs-24.5
+    - name: make emacs
+      command: make chdir=/home/vagrant/emacs-src/emacs-24.5
+    - name: install checkinstall
+      apt: name=checkinstall state=present
+    - name: execute checkinstall
+      command: checkinstall -y chdir=/home/vagrant/emacs-src/emacs-24.5
+      
