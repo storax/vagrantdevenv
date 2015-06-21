@@ -1,11 +1,10 @@
 ---
 - hosts: all
+  become: yes
   tasks:
     - name: update and upgrade apt packages
       apt: update_cache=yes upgrade=dist
-      become: yes
     - name: install software
-      become: yes
       apt: name={{ item }} state=present
       with_items:
         - compizconfig-settings-manager
@@ -30,6 +29,8 @@
         - ubuntu-standard
         - zlib1g-dev
         - zsh
+- hosts: all
+  tasks:
     - name: install homesick
       gem: name=homesick state=latest
     - name: clone storaxcastle
