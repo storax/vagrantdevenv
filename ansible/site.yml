@@ -51,22 +51,31 @@
           dest: /home/vagrant/antigen.zsh
 - host: all
   become: yes
+  vars:
+    emacsver: emacs-24.5
+    emacsdir: /home/vagrant/emacs-src/
   tasks:
+    - name: check if emacs is installed
+      command: dpkg-query -l emacs
+      register: emacs_installed
+      failed_when: emacs_installed.rc > 1
+      changed_when: no
     - name: install python emacs packages
-      pip: name={{ item }} state=latest
+      pip: name={{ item }} state=present
       with_items:
         - elpy
         - pyflakes
     - name: download emacs source
       get-url:
         args:
-          url: http://ftpmirror.gnu.org/emacs/emacs-24.5.tar.gz
-          dest: /home/vagrant/emacs-src/emacs-24.5.tar.gz
+          url: http://ftpmirror.gnu.org/emacs/{{ emacsver }}.tar.gz
+          dest: {{ emacsdir }}{{ emacsver}}.tar.gz
     - name: unzip emacs source
       unarchive:
         args:
-          src: /home/vagrant/emacs-src/emacs-24.5.tar.gz
-          dest: /home/vagrant/emacs-src/emacs-24.5 copy=no
+          src: {{ emacsdir }}{{ emacsver}}.tar.gz
+          dest: {{ emacsdir }}{{ emacsver}} copy=no
+          creates: {{ emacsdir }}{{ emacsver }}
     - name: copy dbconf selections file
       copy: src=dbconf-selections dest=/tmp/dbconf-selections
     - name: set dbconf selections
@@ -74,11 +83,19 @@
     - name: install emacs build dependencies
       apt: name=emacs24 state=build-dep
     - name: configure emacs
-      command: ./configure chdir=/home/vagrant/emacs-src/emacs-24.5
+      command: ./configure
+        args:
+          chdir: {{ emacsdir }}{{ emacsver }}
+          creates: {{ emacsdir }}{{ emacsver }}/config.status
     - name: make emacs
-      command: make chdir=/home/vagrant/emacs-src/emacs-24.5
+      command: make
+        args:
+          chdir: {{ emacsdir }}{{ emacsver}}
+          creates: {{ emacsdir }}{{ emacsver }}/src/emacs
     - name: install checkinstall
       apt: name=checkinstall state=present
     - name: execute checkinstall
-      command: checkinstall -y chdir=/home/vagrant/emacs-src/emacs-24.5
-      
+      command: checkinstall -y chdir={{ emacsdir }}{{ emacsver}}
+      when: emacs_installed.rc == 1
+
+      /home/vagrant/emacs-src/emacs2/emacs-24.5/lisp/progmodes/cc-mode.elc
