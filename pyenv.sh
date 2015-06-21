@@ -22,6 +22,7 @@ sudo pip install -U pip
 sudo pip install ${pkgs[*]}
 
 echo Creating python envs
+export PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs4 --enable-shared"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
