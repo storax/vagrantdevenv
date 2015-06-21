@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "ansible/site.yml"
   end
 #  config.vm.provision "shell", path: "packages.sh", privileged: false
 #  config.vm.provision "shell", path: "dotfiles.sh", privileged: false

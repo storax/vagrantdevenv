@@ -1,0 +1,40 @@
+---
+- hosts: all
+  tasks:
+    - name: update and upgrade apt packages
+      apt: update_cache=yes upgrade=dist
+      become: yes
+    - name: install software
+      become: yes
+      apt: name={{ item }} state=present
+      with_items:
+        - compizconfig-settings-manager
+        - firefox
+        - fonts-dejavu
+        - fonts-inconsolata
+        - gconf2
+        - git
+        - git-flow
+        - git-flow
+        - gitk
+        - guake
+        - jq
+        - pidgin
+        - pidgin-otr
+        - python-pip
+        - python2.7-dev
+        - python3.4-dev
+        - ruby
+        - ruby-dev
+        - systemd-sysv
+        - ubuntu-standard
+        - zlib1g-dev
+        - zsh
+    - name: install homesick
+      gem: name=homesick state=latest
+    - name: clone storaxcastle
+      command: homesick clone storax/storaxcastle
+      args:
+        creates: /home/vagrant/.homesick/repos/storaxcastle
+    - name: link storaxcastle
+      command: homesick symlink stroaxcastle
