@@ -97,5 +97,26 @@
     - name: execute checkinstall
       command: checkinstall -y chdir={{ emacsdir }}{{ emacsver}}
       when: emacs_installed.rc == 1
-
-      /home/vagrant/emacs-src/emacs2/emacs-24.5/lisp/progmodes/cc-mode.elc
+- hosts: all
+  tasks:
+    - name: download pyenv installer
+      get-url:
+        args:
+          url: https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer
+          dest: /tmp/pyenv-installer
+    - name: install pyenv
+      command: bash /tmp/pyenv-installer
+      creates: /home/vagrant/.pyenv
+    - name: install pyenv-virtualenvwrapper
+      git:
+        args:
+          repo: https://github.com/yyuu/pyenv-virtualenvwrapper.git
+          dest: /home/vagrant/.pyenv/plugins/pyenv-virtualenvwrapper
+    - name: install virtualenvwrapper and httpie to system
+      become: yes
+      pip: name={{ item }} state=latest
+      with_items:
+        - pip
+        - httpie
+        - virtualenvwrapper
+    
